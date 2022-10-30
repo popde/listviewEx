@@ -2,7 +2,7 @@
 给winform的listview控件增加编辑框和下拉选择框交互功能 . for winform listview+editBox+comboBox function. 
 
 
-![运行后gif](https://raw.githubusercontent.com/popde/listviewEx/main/1667054381830566.gif)
+![image](https://raw.githubusercontent.com/popde/listviewEx/main/1667054381830566.gif)
 
 
 一直以来winform的listview都只是作为数据输出显示来用, 想要实现数据的双向操作比较难
