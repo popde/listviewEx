@@ -1,0 +1,44 @@
+import win.ui;
+/*DSG{{*/
+mainForm = win.form(text="testListviewEx";right=740;bottom=315;bgcolor=16777215)
+mainForm.add(
+listview={cls="listview";left=13;top=8;right=729;bottom=309;border=1;db=1;dl=1;dr=1;dt=1;font=LOGFONT(h=-13);fullRow=1;gridLines=1;msel=false;vscroll=1;z=1}
+)
+/*}}*/
+
+import console
+console.open()
+
+import win.ui.listviewEx;
+var grid = win.ui.listviewEx(mainForm.listview);
+grid.setcolumnsEditbox(2);
+grid.setcolumnsCombobox(3,"10","1000","2000","5000");
+grid.setcolumnsCombobox(4,{"Z+","Z-","ZNP+","ZNP-"});
+grid.setcolumnsCombobox(5,{"急停","减速停"});
+grid.onEditChanged = function(text,iItem,iSubItem){
+	console.log("onEditChanged",text,iItem,iSubItem)
+}
+
+
+import win.imageList;
+var iml = win.imageList(1,30);
+mainForm.listview.setImageList( iml,1/*_LVSIL_NORMAL*/ );
+mainForm.listview.setColumns(
+	{"轴号","加减速时间","单脉冲运动量","找零方式","停止方式"},
+	{60,120,120,100,100},
+	{2,2,2,2,2},
+);
+var axisData = {};
+for(i=1;20;1){
+	axisData[i]={};
+	axisData[i][1] = "轴"++i;
+	axisData[i][2] = "0.1";
+	axisData[i][3] = "1";
+	axisData[i][4] = "Z+";
+	axisData[i][5] = "急停";
+}
+mainForm.listview.items = axisData;
+
+
+mainForm.show();
+return win.loopMessage();
